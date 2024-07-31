@@ -15,6 +15,14 @@ io.on('connection', socket => {
         socket.data.username = username
     })
 
+    socket.on('message', text => {
+        io.emit('received_message', {
+            text,
+            id: socket.id,
+            author: socket.data.username
+        })
+    })
+
 })
 
 server.listen(PORT, () => {
