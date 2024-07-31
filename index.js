@@ -18,7 +18,7 @@ io.on('connection', socket => {
     socket.on('message', text => {
         io.emit('received_message', {
             text,
-            id: socket.id,
+            authorId: socket.id,
             author: socket.data.username
         })
     })
